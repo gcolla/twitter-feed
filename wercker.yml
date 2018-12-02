@@ -24,5 +24,5 @@ push-release:
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         working-dir: /pipeline/source
         ports: "8080"
-        # env: PORT=$PORT
+        # env: PORT=$PORT -- by GCC
         cmd: sh target/bin/start
