@@ -20,9 +20,9 @@ push-release:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
-        registry: $DOCKER_REGISTRY
+        registry: https://fra.ocir.io/v2
         tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
         working-dir: /pipeline/source
-        ports: $PORT
-        env: PORT=$PORT
+        ports: "8080"
+        # env: PORT=$PORT
         cmd: sh target/bin/start
