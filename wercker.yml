@@ -26,3 +26,24 @@ push-release:
         ports: "8080"
         # env: PORT=$PORT -- by GCC
         cmd: sh target/bin/start
+        
+        #Deploy our container from the Docker Hub to Kubernetes
+deploy-to-cluster:
+    box:
+        id: alpine
+        cmd: /bin/sh
+    steps:
+
+    - bash-template
+
+    - script:
+        name: "Visualise Kubernetes config"
+        code: cat kubernetes.yml
+
+        # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing.
+    - kubectl:
+        name: deploy to kubernetes
+        server: $OKE_MASTER
+        token: $OKE_TOKEN
+        insecure-skip-tls-verify: true
+        command: apply -f kubernetes.yml
