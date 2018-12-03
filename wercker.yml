@@ -40,7 +40,7 @@ deploy-to-cluster:
         name: "Visualise Kubernetes config"
         code: cat kubernetes.yml
 
-        # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing - by GCC
+        # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing - by GCC ver 2
     - kubectl:
         name: deploy to kubernetes
         server: $OKE_MASTER
